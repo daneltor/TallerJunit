@@ -1,5 +1,3 @@
-package tallerpruebas;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -23,7 +21,7 @@ public class Employee
         this.employeeType = employeeType;
     }
     //calcula el salario dependiendo del tipo de trabajador 
-    //y entrega el décimo correspondiente cada 2 meses
+    //y entrega el décimo correspondiente cada 2 meses    
     public float cs() {
         float salario = 0;
         Date date = new Date();
@@ -56,7 +54,7 @@ public class Employee
         }
         return 0.0F;
     }
-    //calcula el bono de fin de año
+    //calcula el bono de fin de año    
     public float CalculateYearBonus() {
         float salario = 0;
         // Si la moneda es USD, se considera todo el salario,
