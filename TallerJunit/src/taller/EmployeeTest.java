@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -61,6 +61,11 @@ public class EmployeeTest {
     	System.out.printf("Salary: %.2f, Currency: %s, Bonus: %.2f%%, EmployeeType: %s \n", salary, currency,
     			bonusPercentage, employeeType);
     	employee = new Employee(salary,currency,bonusPercentage,employeeType);
+    }
+    
+    @After()
+    public void after() {
+    	System.out.println("completed!");
     }
     
     @Test
