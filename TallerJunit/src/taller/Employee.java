@@ -1,3 +1,5 @@
+package taller;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -21,7 +23,7 @@ public class Employee
         this.employeeType = employeeType;
     }
     //calcula el salario dependiendo del tipo de trabajador 
-    //y entrega el dÃ©cimo correspondiente cada 2 meses    
+    //y entrega el décimo correspondiente cada 2 meses
     public float cs() {
         float salario = 0;
         Date date = new Date();
@@ -39,22 +41,22 @@ public class Employee
         {
             case Worker:
                 //Si el mes es impar entonces le entrega 
-                //el dÃ©cimo junto con su salario
+                //el décimo junto con su salario
                 return month%2==0?salario:salario + rmu/12*2;
             case Supervisor:
                 float valueS = salario + (bonusPercentage * 0.35F);
                 //Si el mes es impar entonces le entrega 
-                //el dÃ©cimo junto con su salario y un bono
+                //el décimo junto con su salario y un bono
                 return month%2==0?valueS:valueS + rmu/12*2;
             case Manager:
                 float valueM = salario + (bonusPercentage * 0.7F);
                 //Si el mes es impar entonces le entrega 
-                //el dÃ©cimo junto con su salario y un bono
+                //el décimo junto con su salario y un bono
                 return month%2==0?valueM:valueM + rmu/12*2;
         }
         return 0.0F;
     }
-    //calcula el bono de fin de aÃ±o    
+    //calcula el bono de fin de año
     public float CalculateYearBonus() {
         float salario = 0;
         // Si la moneda es USD, se considera todo el salario,
