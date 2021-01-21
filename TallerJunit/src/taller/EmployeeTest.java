@@ -2,7 +2,10 @@ package taller;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -62,7 +65,41 @@ public class EmployeeTest {
     
     @Test
     public void testCs() {
-    	assertTrue(true);
+    	//
+    	System.out.println("Doing cs...");
+    	float salario = 0;
+        Date date = new Date();
+        //Obtiene la hora local
+        LocalDate localDate;
+        localDate = date.toInstant()
+                .atZone(ZoneId.systemDefault()).toLocalDate();
+        //Obtiene el mes en forma de entero
+        int month = localDate.getMonthValue();
+        // Si la moneda es USD, se considera todo el salario,
+        // caso contrario se resta 5% por cambio de moneda
+        if(currency == "USD"){salario = salary; }
+        else{salario = (float) (salary * 0.95);}
+        switch (employeeType)         
+        {
+            case Worker:
+                //Si el mes es impar entonces le entrega 
+                //el décimo junto con su salario
+            	assertEquals ( month%2==0?salario:salario + rmu/12*2, employee.cs(), 0f);
+            	return;
+            case Supervisor:
+                float valueS = salario + (bonusPercentage * 0.35F);
+                //Si el mes es impar entonces le entrega 
+                //el décimo junto con su salario y un bono
+                assertEquals( month%2==0?valueS:valueS + rmu/12*2, employee.cs(), 0f );
+                return;
+            case Manager:
+                float valueM = salario + (bonusPercentage * 0.7F);
+                //Si el mes es impar entonces le entrega 
+                //el décimo junto con su salario y un bono
+                assertEquals( month%2==0?valueM:valueM + rmu/12*2, employee.cs(), 0f);
+                return;
+        }
+        assertEquals(0.0F, employee.cs(), 0f);
     }
 
 	@Test
