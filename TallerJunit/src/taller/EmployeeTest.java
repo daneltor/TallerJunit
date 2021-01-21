@@ -24,8 +24,7 @@ public class EmployeeTest {
 	@Parameters
 	public static Iterable<Object[]> getData() {
 		List<Object[]> obj = new ArrayList<>();
-		obj.add(new Object[] { 400.00f, "USD", 5.00f, EmployeeType.Worker });
-		
+		obj.add(new Object[] { 400.00f, "USD", 5.00f, EmployeeType.Worker });		
 		obj.add(new Object[] { 400.00f, "USD", 5.00f, EmployeeType.Supervisor });
 		obj.add(new Object[] { 400.00f, "USD", 5.00f, EmployeeType.Manager });
 		
