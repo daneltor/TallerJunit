@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -21,6 +22,7 @@ public class EmployeeTest {
 	public static Iterable<Object[]> getData() {
 		List<Object[]> obj = new ArrayList<>();
 		obj.add(new Object[] { 400.00f, "USD", 5.00f, EmployeeType.Worker });
+		
 		obj.add(new Object[] { 400.00f, "USD", 5.00f, EmployeeType.Supervisor });
 		obj.add(new Object[] { 400.00f, "USD", 5.00f, EmployeeType.Manager });
 		
@@ -65,8 +67,27 @@ public class EmployeeTest {
 
 	@Test
 	public void testCalculateYearBonus() {
+		System.out.println("Doing CalculateYearBonus...");
 		//fail("Not yet implemented");
-		assertTrue(true);
+		float salario = 0;
+        // Si la moneda es USD, se considera todo el salario,
+        // caso contrario se resta 5% por cambio de moneda
+        if(currency == "USD"){salario = salary; }
+        else{salario = (float) (salary * 0.95);}
+        
+        switch (employeeType) {
+        	//el 0f en el assert indica el delta le pongo 0 para mayor precision. se usa con junit 4
+            case Worker:
+            	assertEquals(rmu , employee.CalculateYearBonus(), 0f);
+            	return;
+            case Supervisor:
+            	assertEquals( salario + rmu  *0.5F, employee.CalculateYearBonus(), 0f);
+            	return;
+            case Manager:
+                assertEquals( salario + rmu * 1.0F, employee.CalculateYearBonus(), 0f);
+                return;
+        }
+		assertEquals(0.0F, employee.CalculateYearBonus(), 0f);
 	}
 
 }
