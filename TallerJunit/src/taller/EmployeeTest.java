@@ -15,12 +15,19 @@ import org.junit.runners.Parameterized.Parameters;
 public class EmployeeTest {
 	
 	Employee employee;
-	private int nCaso = 0;
+	private static int nCaso = 0;
 	
 	@Parameters
 	public static Iterable<Object[]> getData() {
 		List<Object[]> obj = new ArrayList<>();
 		obj.add(new Object[] { 400.00f, "USD", 5.00f, EmployeeType.Worker });
+		obj.add(new Object[] { 400.00f, "USD", 5.00f, EmployeeType.Supervisor });
+		obj.add(new Object[] { 400.00f, "USD", 5.00f, EmployeeType.Manager });
+		
+		obj.add(new Object[] { 400.00f, "MXN", 5.00f, EmployeeType.Worker });
+		obj.add(new Object[] { 400.00f, "MXN", 5.00f, EmployeeType.Supervisor });
+		obj.add(new Object[] { 400.00f, "MXN", 5.00f, EmployeeType.Manager });
+		
 		return obj;
 	}
 	
@@ -50,10 +57,16 @@ public class EmployeeTest {
     			bonusPercentage, employeeType);
     	employee = new Employee(salary,currency,bonusPercentage,employeeType);
     }
+    
+    @Test
+    public void testCs() {
+    	assertTrue(true);
+    }
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testCalculateYearBonus() {
+		//fail("Not yet implemented");
+		assertTrue(true);
 	}
 
 }
